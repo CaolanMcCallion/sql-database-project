@@ -1,25 +1,45 @@
 # Ticketmaster-Inspired Event Ticketing System
 
 ## Overview
-This project is a fully functional, normalized relational database designed to simulate the backend of a modern event ticketing platform, inspired by Ticketmaster. It handles user registration, event and venue management, seat selection, secure payments, and more. Developed as part of the CSC7052 Databases module, it adheres to best practices in database design, normalization, and scalability planning.
 
-## Key Features
-- Secure user registration and login with password hashing and salting  
-- Event and venue management, including performers and categories  
-- Seat selection per venue with different ticket types (e.g., VIP, Standard)  
-- Robust ticketing system with order tracking and multi-ticket purchases  
-- Payment processing with associated billing details and card information  
-- Policy management for event-specific and venue-wide rules  
-- Fully normalized to Third Normal Form (3NF)  
+A normalized relational database system inspired by modern ticketing platforms such as Ticketmaster.
 
-## Technologies
-- **DBMS:** MySQL / PostgreSQL (conceptually DBMS-agnostic)  
-- **Design Tool:** ERD design via draw.io / Lucidchart  
-- **Security Concepts:** Password hashing, salting, and data protection  
+This project was designed to simulate the backend architecture of a scalable event booking platform, supporting user accounts, venue management, ticket purchasing, seat allocation, payment processing, and order tracking.
+
+Developed as part of the CSC7052 Databases module during the MSc Software Development programme at Queen’s University Belfast.
+
+---
+
+## Features
+
+- User registration and account management
+- Event and venue management
+- Performer and event category support
+- Seat allocation and ticket selection
+- Multiple ticket types (VIP, Standard, etc.)
+- Order and multi-ticket purchase tracking
+- Payment and billing data structure
+- Event and venue policy management
+- Fully normalized relational schema (3NF)
+
+---
+
+## Technologies & Concepts
+
+- MySQL / PostgreSQL
+- Relational Database Design
+- SQL
+- Database Normalization
+- Entity Relationship Diagrams (ERDs)
+- Data Integrity & Referential Constraints
+- Security Concepts (hashing, salting, separated payment data)
+
+---
 
 ## Database Structure
 
-**Key Entities:**
+### Core Entities
+
 - `customer_account`
 - `profile`
 - `event`
@@ -27,43 +47,91 @@ This project is a fully functional, normalized relational database designed to s
 - `seat`
 - `ticket`
 - `ticket_type`
-- `order` / `order_item`
+- `order`
+- `order_item`
 - `payment`
 - `card_details`
 - `policy`
 - `performer`
 
-## ERD Snapshots
-- **Initial ERD:** Broad planning view with all possible entities  
-- **Final ERD:** Streamlined schema with added ticket types and normalized order structure  
+---
 
-## Security Measures
-- Passwords are hashed and salted before storage  
-- Sensitive card information is stored in a separate `card_details` table  
-- Schema allows for role-based expansion and access level management  
+## Security Considerations
 
-## Normalization Process
-- **1NF:** Atomic attributes, no repeating groups  
-- **2NF:** No partial dependencies on composite keys  
-- **3NF:** Removed transitive dependencies (e.g., moved `ticket_price` to `ticket_type`)  
+- Passwords designed to be hashed and salted before storage
+- Sensitive payment data separated into dedicated tables
+- Structured to support future role-based access systems
+
+---
+
+## Normalization
+
+The database schema was designed and refined through a full normalization process:
+
+### First Normal Form (1NF)
+- Atomic attributes
+- No repeating groups
+
+### Second Normal Form (2NF)
+- Removed partial dependencies
+
+### Third Normal Form (3NF)
+- Removed transitive dependencies
+- Refactored ticket pricing into `ticket_type`
+
+---
 
 ## Scalability & Future Improvements
-- Temporary seat reservations during checkout  
-- Demand-based dynamic pricing  
-- Loyalty and rewards program  
-- Integration with external security tools (e.g., AWS Secrets Manager)  
 
-## Design Philosophy
-- Emphasis on data integrity, readability, and extensibility  
-- Structured for efficient querying and minimal redundancy  
-- Built with future enhancements and real-world use cases in mind  
+Potential future enhancements include:
 
-## How to Use
-1. Clone the repository  
-2. Import the SQL schema into your local MySQL or PostgreSQL instance  
+- Temporary seat reservation system
+- Dynamic pricing models
+- Loyalty and rewards system
+- External authentication/security integrations
+- Cloud-hosted deployment
+- Real-time ticket availability handling
+
+---
+
+## Design Goals
+
+This project focused heavily on:
+
+- Scalability
+- Maintainability
+- Data integrity
+- Efficient querying
+- Reduced redundancy
+- Real-world ticketing workflows
+
+---
+
+## Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/ticketmaster-ticketing-system.git
+```
+
+Import the SQL schema:
+
 ```bash
 mysql -u your_user -p your_database < Ticketmaster.sql
 ```
 
+---
+
+## ERD Diagrams
+
+The repository includes:
+- Initial ERD planning diagrams
+- Final normalized ERD structure
+
+---
+
 ## Author
-Caolan McCallion — Created as part of the MSc Software Development course at Queen’s University Belfast
+
+Caolan McCallion  
+MSc Software Development — Queen’s University Belfast
